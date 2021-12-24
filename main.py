@@ -40,8 +40,8 @@ while True:
         gallery_request = GalleryRequest(user_key=parsed_request[0]['Value Info']['value.request_id.requester_key'],
                                          id=parsed_request[0]['Value Info']['value.request_id.id_in_requester'])
         if gallery_request not in gallery_requests:
-            n = random.randint(0, 36893488147419103231)
+            n = random.randint(0, 2**65-1)
             gallery_requests[gallery_request] = n
             set_oracle_value(gallery_request, n)
 
-    time.sleep(5000)
+    time.sleep(5)
