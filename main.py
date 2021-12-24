@@ -2,16 +2,18 @@ import json
 import time
 import requests
 import random
+import sys
 
-app_file = '/home/ilya/BeamWork/SomeShitForNftGallery/randomoracle/build/wasi/shaders/app.wasm'
-cid = '335a8471e06d986cb287065445d402f93e201a752ca161fd23bff4092279e9ec'
-wallet_api_address = 'http://0.0.0.0:10011/api/wallet'
+app_file = sys.argv[1]
+cid = sys.argv[2]
+port = sys.argv[3]
+wallet_api_address = f'http://0.0.0.0:{port}/api/wallet'
 
 
 class GalleryRequest:
-    def __init__(self, user_key, id):
+    def __init__(self, user_key, request_id):
         self.user_key = user_key
-        self.id = id
+        self.id = request_id
 
 
 def set_oracle_value(gallery_request_to_fulfill, value):
